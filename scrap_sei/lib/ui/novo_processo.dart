@@ -25,25 +25,23 @@ class _NovoProcessoState extends State<NovoProcesso> {
 
     return Scaffold(
 
+
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.line_style,),
+        backgroundColor: Colors.purple,
+        onPressed: irParaMeusProcessos,
+
+      ),
       bottomNavigationBar: BottomAppBar(
-        color: Colors.deepPurpleAccent,
-          child: SizedBox(
-            //child:
-              //Container(
-                width: 20,
-                height: 50,
-                child: FlatButton(onPressed: irParaMeusProcessos,
-                child: Icon(Icons.line_style, color: Colors.white,),),
-              //),
-              //height: 50.0,
-          ),
-        ),
+        color: Colors.deepPurple,
+        child: Container(height: 50.0,),
+      ),
 
-
-
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
       backgroundColor: Colors.white,
       appBar: AppBar(
+
         backgroundColor: Colors.deepPurpleAccent,
         title: Text("Adicionar processo", style: TextStyle(color: Colors.white) ),
         centerTitle: true,

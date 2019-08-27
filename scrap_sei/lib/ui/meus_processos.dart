@@ -35,8 +35,9 @@ class _MeusProcessosState extends State<MeusProcessos> {
 
       ),
       bottomNavigationBar: BottomAppBar(
-        color: Colors.deepPurpleAccent,
-        child: Container(height: 50.0,),
+        color: Colors.deepPurple,
+        child: Container(
+          height: 50.0,),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
 
@@ -44,6 +45,7 @@ class _MeusProcessosState extends State<MeusProcessos> {
         backgroundColor: Colors.deepPurpleAccent,
         title: Text("Meus processos", style: TextStyle(color: Colors.white),),
         centerTitle: true,
+
       ),
 
       body: Container(
