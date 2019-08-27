@@ -78,7 +78,7 @@ class _MeusProcessosState extends State<MeusProcessos> {
                 ),
               ),
 
-  
+
 
               Dismissible(
                 key: Key(DateTime.now().millisecondsSinceEpoch.toString()),

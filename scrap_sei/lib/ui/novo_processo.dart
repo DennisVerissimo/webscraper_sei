@@ -34,7 +34,9 @@ class _NovoProcessoState extends State<NovoProcesso> {
       ),
       bottomNavigationBar: BottomAppBar(
         color: Colors.deepPurple,
-        child: Container(height: 50.0,),
+        child: Container(
+
+          height: 50.0,),
       ),
 
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
