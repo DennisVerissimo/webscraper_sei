@@ -44,7 +44,7 @@ class _NovoProcessoState extends State<NovoProcesso> {
       backgroundColor: Colors.white,
       appBar: AppBar(
 
-        backgroundColor: Colors.deepPurpleAccent,
+        backgroundColor: Colors.deepPurple,
         title: Text("Adicionar processo", style: TextStyle(color: Colors.white) ),
         centerTitle: true,
       ),
