@@ -10,27 +10,28 @@ class NovoProcesso extends StatefulWidget {
 
 class _NovoProcessoState extends State<NovoProcesso> {
 
-  BuildContext _meuContexto;
 
   void irParaMeusProcessos(){
    // Navigator.push(_meuContexto, MaterialPageRoute(builder: (contexto) => MeusProcessos()));
-    Navigator.pushReplacement(_meuContexto, MaterialPageRoute(builder: (contexto) => MeusProcessos()));
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (contexto) => MeusProcessos()));
 
   }
 
   @override
   Widget build(BuildContext context){
 
-    _meuContexto = context;
 
     return Scaffold(
 
 
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.line_style,),
-        backgroundColor: Colors.purple,
-        onPressed: irParaMeusProcessos,
+      floatingActionButton: Container(
+        padding: EdgeInsets.only(top: 45),
+        child: FloatingActionButton(
+          child: Icon(Icons.line_style,),
+          backgroundColor: Colors.deepPurple,
+          onPressed: irParaMeusProcessos,
 
+        ),
       ),
       bottomNavigationBar: BottomAppBar(
         color: Colors.deepPurple,
@@ -57,57 +58,68 @@ class _NovoProcessoState extends State<NovoProcesso> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             //mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              TextFormField(
-                // autofocus: true,
-                keyboardType: TextInputType.text,
-                style: new TextStyle(color: Colors.white, fontSize: 15),
-                decoration: InputDecoration(
-                    labelText: "Processo",
-                    labelStyle: TextStyle(color: Colors.black, fontSize: 20)
-                ),
-              ),
-
-              Divider(),
-              TextFormField(
-                // autofocus: true,
-                keyboardType: TextInputType.text,
-                style: new TextStyle(color: Colors.white, fontSize: 15),
-                decoration: InputDecoration(
-                    labelText: "Descrição",
-                    labelStyle: TextStyle(color: Colors.black, fontSize: 20, )
-                ),
-              ),
-
-              Divider(),
-
-              Row(
-
-                children: <Widget>[
-                  Image.asset("imagens/infra.png", width: 200,),
-                  Expanded(child:
-                  TextFormField(
-                    keyboardType: TextInputType.text,
-                    decoration: InputDecoration(
-                      hintText: "Código da imagem",
-                    ),
-
-                    style: new TextStyle(color: Colors.black, fontSize: 15),
+              Container(
+                child: TextFormField(
+                  // autofocus: true,
+                  keyboardType: TextInputType.text,
+                  style: new TextStyle(color: Colors.black45, fontSize: 15),
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10),
+                      labelText: "Processo",
+                      labelStyle: TextStyle(color: Colors.black, fontSize: 20)
                   ),
-                  )
-                ],
+                ),
               ),
 
 
-              Divider(),
-              RaisedButton(
-                onPressed: () => {
+              Container(
+                padding: EdgeInsets.only(top: 20),
+                child: TextFormField(
+                  // autofocus: true,
+                  keyboardType: TextInputType.text,
+                  style: new TextStyle(color: Colors.black45, fontSize: 15),
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10),
+                      labelText: "Descrição",
+                      labelStyle: TextStyle(color: Colors.black, fontSize: 20, )
+                  ),
+                ),
+              ),
 
-                },
-                child:
-                Text("ADICIONAR",
-                  style: TextStyle(color: Colors.white),),
-                color: Colors.deepPurpleAccent,
 
+              Container(
+                padding: EdgeInsets.only(top: 20),
+                child: Row(
+
+                  children: <Widget>[
+                    Image.asset("imagens/infra.png", width: 200,),
+                    Expanded(child:
+                    TextFormField(
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                        hintText: "Código da imagem",
+                      ),
+
+                      style: new TextStyle(color: Colors.black45, fontSize: 15),
+                    ),
+                    )
+                  ],
+                ),
+              ),
+
+              
+              Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: RaisedButton(
+                  onPressed: () => {
+
+                  },
+                  child:
+                  Text("ADICIONAR",
+                    style: TextStyle(color: Colors.white),),
+                  color: Colors.deepPurpleAccent,
+
+                ),
               )
 
             ],

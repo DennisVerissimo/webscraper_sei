@@ -9,10 +9,43 @@ class ResumoProcesso extends StatefulWidget {
 
 class _ResumoProcessoState extends State<ResumoProcesso> {
 
+  List<Widget> getResumo(){
+    List<Widget> lista = [ListTile(
+      trailing: Column(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(top: 30.0),
+            child: Text("21/05/2019 15:14", style: TextStyle(fontSize: 11),),
+          ),
+        ],
+      ),
+      title: Text("Processo recebido na unidade"),
+      subtitle: Text("ARQUIVO-PROGEP"),
+    )];
+
+    return lista;
+  }
+  List<Widget> getDetalhe(){
+    List<Widget> lista = [ListTile(
+      trailing: Column(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(top: 30.0),
+            child: Text("21/05/2019 15:14", style: TextStyle(fontSize: 11),),
+          ),
+        ],
+      ),
+      title: Text("Process"),
+      subtitle: Text("ARQUIVOS"),
+    ),
+    ];
+
+    return lista;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-      home: new Scaffold(
+      return Scaffold(
         appBar: new AppBar(
           backgroundColor: Colors.deepPurple,
           title: new Text('Resumo processo'),
@@ -41,57 +74,20 @@ class _ResumoProcessoState extends State<ResumoProcesso> {
               ),
               new Expanded(
                 child: new TabBarView(
-                  children: [
-                    DataTable(
-                        columns: <DataColumn>[
-                          DataColumn(label: Text("DATA/HORA")
-                          ),
-                          DataColumn(label: Text("UNIDADE")
-                          ),
-                          DataColumn(label: Text("DESCRIÇÃO")
-                          ),
-                        ]
-                        , 
-                        rows: [
-                          DataRow(cells: [
-                            DataCell(Text("25/05/2019")
-                            ),
-                            DataCell(Text("ARQUIVO- PROGEP")
-                            ),
-                            DataCell(Text("Processo recebido na unidade")
-                            ),
-                          ])
-                        ]
+                  children: <Widget>[
+                    Column(
+                      children: getResumo()
                     ),
-                    DataTable(
-                        columns: <DataColumn>[
-                          DataColumn(label: Text(" ")
-                          ),
-                          DataColumn(label: Text(" ")
-                          ),
-                          DataColumn(label: Text(" ")
-                          ),
-                        ]
-                        ,
-                        rows: [
-                          DataRow(cells: [
-                            DataCell(Text(" ")
-                            ),
-                            DataCell(Text(" ")
-                            ),
-                            DataCell(Text(" ")
-                            ),
-                          ])
-                        ]
-                    ),
+                    new Column(
+                      children: getDetalhe()
+                    )
                   ],
                 ),
               ),
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 }
 
@@ -160,3 +156,99 @@ class _ResumoProcessoState extends State<ResumoProcesso> {
                   ]), */
             ],
           ), */
+
+
+/* [
+                    DataTable(
+                        columns: <DataColumn>[
+                          DataColumn(label: Text("DATA/HORA")
+                          ),
+                          DataColumn(label: Text("UNIDADE")
+                          ),
+                          DataColumn(label: Text("DESCRIÇÃO")
+                          ),
+                        ]
+                        ,
+                        rows: [
+                          DataRow(cells: [
+                            DataCell(Text("25/05/2019")
+                            ),
+                            DataCell(Text("ARQUIVO- PROGEP")
+                            ),
+                            DataCell(Text("Processo recebido na unidade")
+                            ),
+                          ])
+                        ]
+                    ),
+                    DataTable(
+                        columns: <DataColumn>[
+                          DataColumn(label: Text(" ")
+                          ),
+                          DataColumn(label: Text(" ")
+                          ),
+                          DataColumn(label: Text(" ")
+                          ),
+                        ]
+                        ,
+                        rows: [
+                          DataRow(cells: [
+                            DataCell(Text(" ")
+                            ),
+                            DataCell(Text(" ")
+                            ),
+                            DataCell(Text(" ")
+                            ),
+                          ])
+                        ]
+                    ),
+                  ],*/
+
+
+/* ListTile(
+                      trailing: Column(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(top: 30.0),
+                            child: Text("21/05/2019 15:14", style: TextStyle(fontSize: 11),),
+                          ),
+                        ],
+                      ),
+                      title: Text("Processo recebido na unidade"),
+                      subtitle: Text("ARQUIVO-PROGEP"),
+                    ),
+                    ListTile(
+                      trailing: Column(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(top: 30.0),
+                            child: Text("21/05/2019 15:14", style: TextStyle(fontSize: 11),),
+                          ),
+                        ],
+                      ),
+                      title: Text("P "),
+                      subtitle: Text("ARQUIVO-PROGEP"),
+                    ),
+                    ListTile(
+                      trailing: Column(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(top: 30.0),
+                            child: Text("21/05/2019 15:14", style: TextStyle(fontSize: 11),),
+                          ),
+                        ],
+                      ),
+                      title: Text(" recebido na unidade"),
+                      subtitle: Text("ARQUIVO-PROGEP"),
+                    ),
+                    ListTile(
+                      trailing: Column(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(top: 8.0),
+                            child: Text("10/10/2019",),
+                          ),
+                        ],
+                      ),
+                      title: Text("Atestado médico"),
+                      subtitle: Text("23487.000815/2019-97"),
+                    ), */

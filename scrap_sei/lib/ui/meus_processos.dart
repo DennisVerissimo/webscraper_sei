@@ -10,20 +10,18 @@ class MeusProcessos extends StatefulWidget {
 
 class _MeusProcessosState extends State<MeusProcessos> {
 
-  BuildContext _meuContexto;
 
   void irParaNovoProcesso(){
-    Navigator.pushReplacement(_meuContexto, MaterialPageRoute(builder: (contexto) => NovoProcesso() ));
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (contexto) => NovoProcesso() ));
   }
 
   void irParaResumo(){
-    Navigator.push(_meuContexto, MaterialPageRoute(builder: (context) => ResumoProcesso()));
+    Navigator.push(context, MaterialPageRoute(builder: (context) => ResumoProcesso()));
   }
 
   @override
   Widget build(BuildContext context) {
 
-    _meuContexto = context;
 
 
     return Scaffold(
