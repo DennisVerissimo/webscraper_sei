@@ -9,9 +9,93 @@ class ResumoProcesso extends StatefulWidget {
 
 class _ResumoProcessoState extends State<ResumoProcesso> {
 
-
-
   @override
+  Widget build(BuildContext context) {
+    return new MaterialApp(
+      home: new Scaffold(
+        appBar: new AppBar(
+          backgroundColor: Colors.deepPurple,
+          title: new Text('Resumo processo'),
+          centerTitle: true,
+        ),
+
+        body: new DefaultTabController(
+          length: 2,
+          child: new Column(
+            children: <Widget>[
+              new Container(
+                constraints: BoxConstraints(maxHeight: 50.0),
+                child: new Material(
+                  color: Colors.deepPurpleAccent,
+                  child: new TabBar(
+                    tabs: [
+                      Tab(
+                          text: "Resumo",
+                      ),
+                      Tab(
+                          text: "Detalhe",
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              new Expanded(
+                child: new TabBarView(
+                  children: [
+                    DataTable(
+                        columns: <DataColumn>[
+                          DataColumn(label: Text("DATA/HORA")
+                          ),
+                          DataColumn(label: Text("UNIDADE")
+                          ),
+                          DataColumn(label: Text("DESCRIÇÃO")
+                          ),
+                        ]
+                        , 
+                        rows: [
+                          DataRow(cells: [
+                            DataCell(Text("25/05/2019")
+                            ),
+                            DataCell(Text("ARQUIVO- PROGEP")
+                            ),
+                            DataCell(Text("Processo recebido na unidade")
+                            ),
+                          ])
+                        ]
+                    ),
+                    DataTable(
+                        columns: <DataColumn>[
+                          DataColumn(label: Text(" ")
+                          ),
+                          DataColumn(label: Text(" ")
+                          ),
+                          DataColumn(label: Text(" ")
+                          ),
+                        ]
+                        ,
+                        rows: [
+                          DataRow(cells: [
+                            DataCell(Text(" ")
+                            ),
+                            DataCell(Text(" ")
+                            ),
+                            DataCell(Text(" ")
+                            ),
+                          ])
+                        ]
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+ /* @override
   Widget build(BuildContext context) {
 
     return Scaffold(
@@ -50,7 +134,7 @@ class _ResumoProcessoState extends State<ResumoProcesso> {
         ),
     );
   }
-}
+} */
 
 
 /* Table(
