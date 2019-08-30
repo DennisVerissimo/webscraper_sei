@@ -93,14 +93,12 @@ class _NovoProcessoState extends State<NovoProcesso> {
                   child: Row(
                     children: <Widget>[
                       Container(
-                          child:
-                            Image.asset("imagens/infra.png",
+                          child: Image.asset("imagens/infra.png",
                               fit: BoxFit.fitWidth ,
                             ),
                         margin: EdgeInsets.only(right: 10),
                       ),
-                      Expanded(child:
-                      TextFormField(
+                      Expanded(child: TextFormField(
                         keyboardType: TextInputType.text,
                         decoration: InputDecoration(
                           hintText: "Código da imagem",

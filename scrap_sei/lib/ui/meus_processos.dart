@@ -59,7 +59,7 @@ class _MeusProcessosState extends State<MeusProcessos> {
               Dismissible(
                 key: Key(DateTime.now().millisecondsSinceEpoch.toString()),
                 background: Container(
-                  color: Colors.deepPurpleAccent,
+                  color: Colors.red,
                 ),
                 direction: DismissDirection.startToEnd,
                 child: ListTile(
@@ -69,7 +69,7 @@ class _MeusProcessosState extends State<MeusProcessos> {
                           height: 32,
                           child: Icon(Icons.notifications_active, size: 15, color: Colors.green,),
                         ),
-                      Text("10/10/10", style: TextStyle(fontSize: 12),),
+                      Text("21/05/2019", style: TextStyle(fontSize: 12),),
                     ],
                   ) ,
 
@@ -84,7 +84,7 @@ class _MeusProcessosState extends State<MeusProcessos> {
               Dismissible(
                 key: Key(DateTime.now().millisecondsSinceEpoch.toString()),
                 background: Container(
-                  color: Colors.deepPurpleAccent,
+                  color: Colors.red,
                 ),
                 direction: DismissDirection.startToEnd,
                 child: ListTile(
@@ -92,9 +92,9 @@ class _MeusProcessosState extends State<MeusProcessos> {
                       children: <Widget>[
                         Container(
                           height: 32,
-                          child: Icon(Icons.calendar_today, size: 15, color: Colors.grey,),
+                          child: Icon(Icons.notifications_active, size: 15, color: Colors.green,),
                         ),
-                        Text("10/10/10", style: TextStyle(fontSize: 12),),
+                        Text("22/09/2019", style: TextStyle(fontSize: 12),),
                       ],
                     ) ,
 
@@ -108,7 +108,7 @@ class _MeusProcessosState extends State<MeusProcessos> {
               Dismissible(
                 key: Key(DateTime.now().millisecondsSinceEpoch.toString()),
                 background: Container(
-                  color: Colors.deepPurpleAccent,
+                  color: Colors.red,
                 ),
                 direction: DismissDirection.startToEnd,
                 child: ListTile(
@@ -116,9 +116,9 @@ class _MeusProcessosState extends State<MeusProcessos> {
                       children: <Widget>[
                         Container(
                           height: 32,
-                          child: Icon(Icons.notifications_active, size: 15, color: Colors.green,),
+                          child: Icon(Icons.calendar_today, size: 15, color: Colors.grey,),
                         ),
-                        Text("10/10/10", style: TextStyle(fontSize: 12),),
+                        Text("07/06/2019", style: TextStyle(fontSize: 12),),
                       ],
                     ) ,
 
@@ -131,7 +131,13 @@ class _MeusProcessosState extends State<MeusProcessos> {
               Dismissible(
                 key: Key(DateTime.now().millisecondsSinceEpoch.toString()),
                 background: Container(
-                  color: Colors.deepPurpleAccent,
+                  color: Colors.red,
+                  child: Align(
+                    alignment: Alignment(-0.9, 0.0),
+                    child: Icon(
+                      Icons.delete, color: Colors.white,
+                    ),
+                  ),
                 ),
                 direction: DismissDirection.startToEnd,
                 child: ListTile(
@@ -141,9 +147,9 @@ class _MeusProcessosState extends State<MeusProcessos> {
                           height: 32,
                           child: Icon(Icons.calendar_today, size: 15, color: Colors.grey,),
                         ),
-                        Text("10/10/10", style: TextStyle(fontSize: 12),),
+                        Text("03/06/2019", style: TextStyle(fontSize: 12),),
                       ],
-                    ) ,
+                    ),
 
                     title: Text("Ajuda de custo"),
                     subtitle: Text("23487.000815/2019-97"),
