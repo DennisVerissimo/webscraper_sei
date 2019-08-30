@@ -95,7 +95,7 @@ class _ResumoProcessoState extends State<ResumoProcesso> {
             Text(detalhes[i]["data_registro"], style: TextStyle(fontSize: 11),),
             ],
           ),
-          title: Text(detalhes[i]["decumento"]),
+          title: Text(detalhes[i]["documento"]),
           subtitle: Text(detalhes[i]["unidade"]),
         )
       );
