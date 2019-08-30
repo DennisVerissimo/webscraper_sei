@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 
 class ResumoProcesso extends StatefulWidget {
   @override
@@ -35,6 +35,27 @@ class _ResumoProcessoState extends State<ResumoProcesso> {
       "unidade": 'CCB',
       "descricao": 'Processo remetido pela unidade DCP'
     },
+    {
+      "data": '21/05/2019 16:21',
+      "unidade": 'DCP',
+      "descricao": 'Processo remetido pela unidade CDA'
+    },
+    {
+      "data": '21/05/2019 15:55',
+      "unidade": 'CDA',
+      "descricao": 'Processo recebido pela unidade'
+    },
+    {
+      "data": '21/05/2019 09:12',
+      "unidade": 'CDA',
+      "descricao": 'Processo remetido pela unidade CODAR'
+    },
+    {
+      "data": '21/05/2019 08:08',
+      "unidade": 'CODAR',
+      "descricao": 'Processo recebido pela unidade'
+    },
+
 
   ];
 
@@ -43,20 +64,32 @@ class _ResumoProcessoState extends State<ResumoProcesso> {
       "documento": '0661961',
       "tipo": 'oficio',
       "data_registro": "29/04/2019",
-      "unidade": 'GAB-JAG'
+      "unidade": 'GAB-JAG',
+      "link": 'https://sei.ifce.edu.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?RkR_pcJjZVlGubyMvqtHr3aWiFYqB9yUArU3co5SFAMpRlEE9OieWzHrSRz4cm4RV5NbgieVOW7J5rg2ZVhv7-8-QEANephkN_m57ISXpbr8K3UM6q237LiMT6qQWA6e'
     },
     {
       "documento": '0661988',
       "tipo": 'convite',
       "data_registro": "29/04/2019",
-      "unidade": 'GAB-JAG'
+      "unidade": 'GAB-JAG',
+      "link": 'https://sei.ifce.edu.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?RkR_pcJjZVlGubyMvqtHr3aWiFYqB9yUArU3co5SFAMpRlEE9OieWzHrSRz4cm4RV5NbgieVOW7J5rg2ZVhv7-8-QEANephkN_m57ISXpbr8K3UM6q237LiMT6qQWA6e'
     },
     {
       "documento": '0661999',
       "tipo": 'convite',
       "data_registro": "29/04/2019",
-      "unidade": 'GAB-JAG'
+      "unidade": 'GAB-JAG',
+      "link": 'https://sei.ifce.edu.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?RkR_pcJjZVlGubyMvqtHr3aWiFYqB9yUArU3co5SFAMpRlEE9OieWzHrSRz4cm4RV5NbgieVOW7J5rg2ZVhv7-8-QEANephkN_m57ISXpbr8K3UM6q237LiMT6qQWA6e'
     },
+    {
+      "documento": '0661999',
+      "tipo": 'convite',
+      "data_registro": "29/04/2019",
+      "unidade": 'GAB-JAG',
+      "link": 'https://sei.ifce.edu.br/sei/modulos/pesquisa/md_pesq_documento_consulta_externa.php?RkR_pcJjZVlGubyMvqtHr3aWiFYqB9yUArU3co5SFAMpRlEE9OieWzHrSRz4cm4RV5NbgieVOW7J5rg2ZVhv7-8-QEANephkN_m57ISXpbr8K3UM6q237LiMT6qQWA6e'
+
+    },
+    
 
   ];
 
@@ -68,7 +101,7 @@ class _ResumoProcessoState extends State<ResumoProcesso> {
           trailing: Column(
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.only(top: 30.0),
+                padding: const EdgeInsets.only(top: 35.0),
                 child: Text(resumos[i]["data"] , style: TextStyle(fontSize: 11),),
               ),
             ],
@@ -89,13 +122,21 @@ class _ResumoProcessoState extends State<ResumoProcesso> {
         trailing: Column(
           children: <Widget>[
               Container(
-                height: 32,
+                padding: EdgeInsets.only(top: 8),
+                height: 30,
                 child: Text(detalhes[i]["tipo"]),
               ),
             Text(detalhes[i]["data_registro"], style: TextStyle(fontSize: 11),),
             ],
           ),
-          title: Text(detalhes[i]["documento"]),
+          title: InkWell(
+              child: Text(detalhes[i]["documento"]),
+              onTap: () async{
+                 if (await canLaunch(detalhes[i]["link"])){
+                   await launch(detalhes[i]["link"]);
+                 }
+              },
+            ),
           subtitle: Text(detalhes[i]["unidade"]),
         )
       );
@@ -104,16 +145,17 @@ class _ResumoProcessoState extends State<ResumoProcesso> {
   }
 
   @override
+
   Widget build(BuildContext context) {
       return Scaffold(
-        appBar: PreferredSize(
+       /* appBar: PreferredSize(
           preferredSize: Size.fromHeight(50),
           child: AppBar(
               backgroundColor: Colors.deepPurple,
               title: new Text('Resumo processo'),
               centerTitle: true,
             ),
-        ),
+        ), */
 
         body: new DefaultTabController(
           length: 2,
@@ -138,11 +180,15 @@ class _ResumoProcessoState extends State<ResumoProcesso> {
               new Expanded(
                 child: new TabBarView(
                   children: <Widget>[
-                    Column(
-                      children: getResumo()
+                    SingleChildScrollView(
+                      child: Column(
+                        children: getResumo()
+                      ),
                     ),
-                    new Column(
-                      children: getDetalhe()
+                    SingleChildScrollView(
+                      child: new Column(
+                        children: getDetalhe()
+                      ),
                     )
                   ],
                 ),

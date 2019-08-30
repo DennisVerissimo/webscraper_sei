@@ -52,8 +52,7 @@ class _NovoProcessoState extends State<NovoProcesso> {
         ),
       ),
 
-      body: Center(
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
           padding: EdgeInsets.all(20),
           child: Center(
             child: Column(
@@ -127,7 +126,6 @@ class _NovoProcessoState extends State<NovoProcesso> {
             ),
           ),
         ),
-      ),
     );
   }
 
