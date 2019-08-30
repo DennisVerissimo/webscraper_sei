@@ -60,15 +60,20 @@ class _MeusProcessosState extends State<MeusProcessos> {
                 key: Key(DateTime.now().millisecondsSinceEpoch.toString()),
                 background: Container(
                   color: Colors.red,
+                  child: Align(
+                    alignment: Alignment(-0.9, 0.0),
+                    child: Icon(
+                      Icons.delete, color: Colors.white,
+                    ),
+                  ),
                 ),
                 direction: DismissDirection.startToEnd,
                 child: ListTile(
                   trailing: Column(
                     children: <Widget>[
                          Container(
-                          height: 32,
-                          child: Icon(Icons.notifications_active, size: 15, color: Colors.green,),
-                        ),
+                             height: 32,
+                             child: Icon(Icons.notifications_active, size: 15, color: Colors.green,)),
                       Text("21/05/2019", style: TextStyle(fontSize: 12),),
                     ],
                   ) ,
@@ -79,12 +84,16 @@ class _MeusProcessosState extends State<MeusProcessos> {
                 ),
               ),
 
-
-
               Dismissible(
                 key: Key(DateTime.now().millisecondsSinceEpoch.toString()),
                 background: Container(
                   color: Colors.red,
+                  child: Align(
+                    alignment: Alignment(-0.9, 0.0),
+                    child: Icon(
+                      Icons.delete, color: Colors.white,
+                    ),
+                  ),
                 ),
                 direction: DismissDirection.startToEnd,
                 child: ListTile(
@@ -104,11 +113,16 @@ class _MeusProcessosState extends State<MeusProcessos> {
                 ),
               ),
 
-
               Dismissible(
                 key: Key(DateTime.now().millisecondsSinceEpoch.toString()),
                 background: Container(
                   color: Colors.red,
+                  child: Align(
+                    alignment: Alignment(-0.9, 0.0),
+                    child: Icon(
+                      Icons.delete, color: Colors.white,
+                    ),
+                  ),
                 ),
                 direction: DismissDirection.startToEnd,
                 child: ListTile(
