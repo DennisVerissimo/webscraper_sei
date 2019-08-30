@@ -9,47 +9,110 @@ class ResumoProcesso extends StatefulWidget {
 
 class _ResumoProcessoState extends State<ResumoProcesso> {
 
-  List<Widget> getResumo(){
-    List<Widget> lista = [ListTile(
-      trailing: Column(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(top: 30.0),
-            child: Text("21/05/2019 15:14", style: TextStyle(fontSize: 11),),
-          ),
-        ],
-      ),
-      title: Text("Processo recebido na unidade"),
-      subtitle: Text("ARQUIVO-PROGEP"),
-    )];
+  List<Map> resumos = [
+    {
+      "data": '21/05/2019 15:14',
+      "unidade": 'ARQUIVO-PROGEP',
+      "descricao": 'Processo recebido na unidade'
+  },
+    {
+      "data": '21/05/2019 15:01',
+      "unidade": 'ARQUIVO-PROGEP',
+      "descricao": 'Processo remetido pela unidade CCB'
+    },
+    {
+      "data": '21/05/2019 14:51',
+      "unidade": 'CCB',
+      "descricao": 'Processo recebido na unidade'
+    },
+    {
+      "data": '21/05/2019 07:55',
+      "unidade": 'DCP',
+      "descricao": 'Processo recebido na unidade'
+    },
+    {
+      "data": '21/05/2019 07:55',
+      "unidade": 'CCB',
+      "descricao": 'Processo remetido pela unidade DCP'
+    },
 
+  ];
+
+  List<Map> detalhes = [
+    {
+      "documento": '0661961',
+      "tipo": 'oficio',
+      "data_registro": "29/04/2019",
+      "unidade": 'GAB-JAG'
+    },
+    {
+      "documento": '0661988',
+      "tipo": 'convite',
+      "data_registro": "29/04/2019",
+      "unidade": 'GAB-JAG'
+    },
+    {
+      "documento": '0661999',
+      "tipo": 'convite',
+      "data_registro": "29/04/2019",
+      "unidade": 'GAB-JAG'
+    },
+
+  ];
+
+  List<Widget> getResumo(){
+    List<Widget> lista = [];
+
+    for (int i = 0; i < resumos.length; i++){
+      lista.add(ListTile(
+          trailing: Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(top: 30.0),
+                child: Text(resumos[i]["data"] , style: TextStyle(fontSize: 11),),
+              ),
+            ],
+          ),
+          title: Text(resumos[i]["descricao"]),
+          subtitle: Text(resumos[i]["unidade"])
+        )
+      );
+    }
     return lista;
   }
-  List<Widget> getDetalhe(){
-    List<Widget> lista = [ListTile(
-      trailing: Column(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(top: 30.0),
-            child: Text("21/05/2019 15:14", style: TextStyle(fontSize: 11),),
-          ),
-        ],
-      ),
-      title: Text("Process"),
-      subtitle: Text("ARQUIVOS"),
-    ),
-    ];
 
+  List<Widget> getDetalhe(){
+    List<Widget> lista = [];
+
+    for (int i = 0; i < detalhes.length; i++){
+      lista.add(ListTile(
+        trailing: Column(
+          children: <Widget>[
+              Container(
+                height: 32,
+                child: Text(detalhes[i]["tipo"]),
+              ),
+            Text(detalhes[i]["data_registro"], style: TextStyle(fontSize: 11),),
+            ],
+          ),
+          title: Text(detalhes[i]["decumento"]),
+          subtitle: Text(detalhes[i]["unidade"]),
+        )
+      );
+    }
     return lista;
   }
 
   @override
   Widget build(BuildContext context) {
       return Scaffold(
-        appBar: new AppBar(
-          backgroundColor: Colors.deepPurple,
-          title: new Text('Resumo processo'),
-          centerTitle: true,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(50),
+          child: AppBar(
+              backgroundColor: Colors.deepPurple,
+              title: new Text('Resumo processo'),
+              centerTitle: true,
+            ),
         ),
 
         body: new DefaultTabController(

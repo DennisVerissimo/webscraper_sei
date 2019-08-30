@@ -39,11 +39,14 @@ class _MeusProcessosState extends State<MeusProcessos> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
 
-      appBar: AppBar(
-        backgroundColor: Colors.deepPurpleAccent,
-        title: Text("Meus processos", style: TextStyle(color: Colors.white),),
-        centerTitle: true,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(50),
+        child: AppBar(
+          backgroundColor: Colors.deepPurpleAccent,
+          title: Text("Meus processos", style: TextStyle(color: Colors.white),),
+          centerTitle: true,
 
+        ),
       ),
 
       body: Container(
