@@ -7,7 +7,7 @@ import 'package:scrap_sei/ui/resumo_processo.dart';
 void main(){
   runApp(
     MaterialApp(title: "Tela 1",
-                home: NovoProcesso()
+                home: MeusProcessos()
     )
   );
 

@@ -92,7 +92,13 @@ class _NovoProcessoState extends State<NovoProcesso> {
                   padding: EdgeInsets.only(top: 20),
                   child: Row(
                     children: <Widget>[
-                      Image.asset("imagens/infra.png", width: 200,),
+                      Container(
+                          child:
+                            Image.asset("imagens/infra.png",
+                              fit: BoxFit.fitWidth ,
+                            ),
+                        margin: EdgeInsets.only(right: 10),
+                      ),
                       Expanded(child:
                       TextFormField(
                         keyboardType: TextInputType.text,

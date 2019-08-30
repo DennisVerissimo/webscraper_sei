@@ -129,14 +129,16 @@ class _ResumoProcessoState extends State<ResumoProcesso> {
             Text(detalhes[i]["data_registro"], style: TextStyle(fontSize: 11),),
             ],
           ),
-          title: InkWell(
-              child: Text(detalhes[i]["documento"]),
-              onTap: () async{
-                 if (await canLaunch(detalhes[i]["link"])){
-                   await launch(detalhes[i]["link"]);
-                 }
-              },
-            ),
+
+          title:  InkWell(
+            child: Text(detalhes[i]["documento"], style: TextStyle(color: Colors.blue),),
+            onTap: () async{
+              if (await canLaunch(detalhes[i]["link"])){
+                await launch(detalhes[i]["link"]);
+              }
+            },
+          ),
+         /* */
           subtitle: Text(detalhes[i]["unidade"]),
         )
       );
@@ -148,14 +150,14 @@ class _ResumoProcessoState extends State<ResumoProcesso> {
 
   Widget build(BuildContext context) {
       return Scaffold(
-       /* appBar: PreferredSize(
-          preferredSize: Size.fromHeight(50),
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(35),
           child: AppBar(
-              backgroundColor: Colors.deepPurple,
-              title: new Text('Resumo processo'),
+              backgroundColor: Colors.deepPurpleAccent,
+              title: new Text(' '),
               centerTitle: true,
             ),
-        ), */
+        ),
 
         body: new DefaultTabController(
           length: 2,
