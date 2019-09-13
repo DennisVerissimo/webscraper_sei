@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:collection/collection.dart';
+import 'package:scrap_sei/helper/processo.dart';
 
 
 
@@ -44,6 +45,28 @@ class ProcessoHelper{
     }
    );
  }
+
+ Future<int> deleteProcesso(int numero) async{
+   Database dbProcesso = await db;
+   return await dbProcesso.delete(tabelaProcesso, where: "$numeroColuna = ?", whereArgs: [numero]);
+ }
+
+ Future<int> updateProceso(Processo processo) async{
+   Database dbProcesso = await db;
+   return await dbProcesso.update(tabelaProcesso, processo.toMap(),
+        where: "$numeroColuna = ?",
+        whereArgs: [processo.numero]
+   );
+
+ }
+
+ void insertProcesso(Processo processo) async{
+   processo.numero = await _db.insert(tabelaProcesso, processo.toMap()
+   );
+
+ }
+
+
 
 }
 

@@ -7,6 +7,8 @@ class Processo{
   String link;
   bool alguma_alt;
 
+  Processo();
+
 
   Processo.fromMap(Map map){
 
