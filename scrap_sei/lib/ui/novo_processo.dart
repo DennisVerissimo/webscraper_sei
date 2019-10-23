@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:scrap_sei/ui/meus_processos.dart';
+import 'package:scrap_sei/db/my_database.dart';
 
 
 class NovoProcesso extends StatefulWidget {
@@ -16,6 +17,8 @@ class _NovoProcessoState extends State<NovoProcesso> {
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (contexto) => MeusProcessos()));
 
   }
+
+  String text = "";
 
   @override
   Widget build(BuildContext context){
@@ -69,6 +72,9 @@ class _NovoProcessoState extends State<NovoProcesso> {
                         labelText: "Processo",
                         labelStyle: TextStyle(color: Colors.black, fontSize: 20)
                     ),
+                    onChanged: (value){
+                      text = value;
+                    },
                   ),
                 ),
 
@@ -84,6 +90,9 @@ class _NovoProcessoState extends State<NovoProcesso> {
                         labelText: "Descrição",
                         labelStyle: TextStyle(color: Colors.black, fontSize: 20, )
                     ),
+                    onChanged: (value){
+                      text = value;
+                    },
                   ),
                 ),
 
@@ -115,8 +124,8 @@ class _NovoProcessoState extends State<NovoProcesso> {
                 Padding(
                   padding: const EdgeInsets.only(top: 10),
                   child: RaisedButton(
-                    onPressed: () => {
-
+                    onPressed: () async{
+                      await MyDatabase.instance.addProcesso(Processo(numero: text, nome: text, ));
                     },
                     child:
                     Text("ADICIONAR",

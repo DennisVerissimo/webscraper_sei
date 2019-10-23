@@ -2,6 +2,7 @@
 import 'package:scrap_sei/ui/resumo_processo.dart';
 import 'package:flutter/material.dart';
 import 'package:scrap_sei/ui/novo_processo.dart';
+import 'package:scrap_sei/db/my_database.dart';
 
 class MeusProcessos extends StatefulWidget {
   @override
@@ -26,29 +27,57 @@ class _MeusProcessosState extends State<MeusProcessos> {
 
     return Scaffold(
 
-      floatingActionButton: FloatingActionButton(
+    /*  floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add,),
         backgroundColor: Colors.purple,
         onPressed: irParaNovoProcesso,
 
-      ),
+      ), */
       bottomNavigationBar: BottomAppBar(
         color: Colors.deepPurple,
         child: Container(
           height: 50.0,),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+     /* floatingActionButtonLocation: FloatingActionButtonLocation.endDocked, */
 
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50),
         child: AppBar(
+          actions: <Widget>[
+            IconButton(icon: Icon(Icons.add), onPressed: irParaNovoProcesso,)
+          ],
           backgroundColor: Colors.deepPurpleAccent,
           title: Text("Meus processos", style: TextStyle(color: Colors.white),),
           centerTitle: true,
         ),
       ),
 
-      body: Container(
+      body: StreamBuilder<List<Processo>>(
+        stream: MyDatabase.instance.getAllProcessos(),
+        builder:(context, snapshot){
+
+          List<Processo> list = snapshot.data;
+
+        return ListView.builder(
+            itemCount: list.length,
+            itemBuilder: (context, index){
+              return ListTile(
+                leading: IconButton(icon: Icon(Icons.delete), onPressed:(){
+                  MyDatabase.instance.deleteProcesso((list[index].numero));
+                },),
+
+                title: Text(list[index].nome),
+                subtitle: Text(list[index].numero),
+                onTap: irParaResumo,
+              );
+            });
+      },),
+    );
+  }
+}
+
+
+/* Container(
 
           child: ListView(
             scrollDirection: Axis.vertical,
@@ -172,7 +201,4 @@ class _MeusProcessosState extends State<MeusProcessos> {
 
             ],
           ),
-        ),
-    );
-  }
-}
+        ),*/
