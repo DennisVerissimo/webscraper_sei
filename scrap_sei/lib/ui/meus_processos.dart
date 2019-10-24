@@ -66,6 +66,12 @@ class _MeusProcessosState extends State<MeusProcessos> {
                   MyDatabase.instance.deleteProcesso((list[index].numero));
                 },),
 
+                trailing: Column(
+                  children: <Widget>[
+                    Text(list[index].data_alt),
+                  ],
+                ),
+
                 title: Text(list[index].nome),
                 subtitle: Text(list[index].numero),
                 onTap: irParaResumo,

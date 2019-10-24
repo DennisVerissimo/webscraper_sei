@@ -18,7 +18,8 @@ class _NovoProcessoState extends State<NovoProcesso> {
 
   }
 
-  String text = "";
+  String num = "";
+  String des = "";
 
   @override
   Widget build(BuildContext context){
@@ -27,7 +28,7 @@ class _NovoProcessoState extends State<NovoProcesso> {
     return Scaffold(
 
 
-      floatingActionButton: Container(
+    /*  floatingActionButton: Container(
         padding: EdgeInsets.only(top: 45),
         child: FloatingActionButton(
           child: Icon(Icons.line_style,),
@@ -35,7 +36,7 @@ class _NovoProcessoState extends State<NovoProcesso> {
           onPressed: irParaMeusProcessos,
 
         ),
-      ),
+      ), */
       bottomNavigationBar: BottomAppBar(
         color: Colors.deepPurple,
         child: Container(
@@ -49,6 +50,9 @@ class _NovoProcessoState extends State<NovoProcesso> {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50),
         child: AppBar(
+          actions: <Widget>[
+            IconButton(icon: Icon(Icons.list), onPressed: irParaMeusProcessos,)
+          ],
           backgroundColor: Colors.deepPurple,
           title: Text("Adicionar processo", style: TextStyle(color: Colors.white)),
           centerTitle: true,
@@ -73,7 +77,7 @@ class _NovoProcessoState extends State<NovoProcesso> {
                         labelStyle: TextStyle(color: Colors.black, fontSize: 20)
                     ),
                     onChanged: (value){
-                      text = value;
+                      num = value;
                     },
                   ),
                 ),
@@ -91,7 +95,7 @@ class _NovoProcessoState extends State<NovoProcesso> {
                         labelStyle: TextStyle(color: Colors.black, fontSize: 20, )
                     ),
                     onChanged: (value){
-                      text = value;
+                      des = value;
                     },
                   ),
                 ),
@@ -125,7 +129,7 @@ class _NovoProcessoState extends State<NovoProcesso> {
                   padding: const EdgeInsets.only(top: 10),
                   child: RaisedButton(
                     onPressed: () async{
-                      await MyDatabase.instance.addProcesso(Processo(numero: text, nome: text, ));
+                      await MyDatabase.instance.addProcesso(Processo(numero: num, nome: des,));
                     },
                     child:
                     Text("ADICIONAR",
