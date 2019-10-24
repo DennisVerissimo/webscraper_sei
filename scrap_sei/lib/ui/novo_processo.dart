@@ -130,6 +130,7 @@ class _NovoProcessoState extends State<NovoProcesso> {
                   child: RaisedButton(
                     onPressed: () async{
                       await MyDatabase.instance.addProcesso(Processo(numero: num, nome: des,));
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (contexto) => MeusProcessos() ));
                     },
                     child:
                     Text("ADICIONAR",

@@ -3,6 +3,8 @@ import 'package:scrap_sei/ui/resumo_processo.dart';
 import 'package:flutter/material.dart';
 import 'package:scrap_sei/ui/novo_processo.dart';
 import 'package:scrap_sei/db/my_database.dart';
+import 'package:intl/intl.dart';
+
 
 class MeusProcessos extends StatefulWidget {
   @override
@@ -23,7 +25,9 @@ class _MeusProcessosState extends State<MeusProcessos> {
   @override
   Widget build(BuildContext context) {
 
-
+    var _now = new DateTime.now();
+    var formatter = new DateFormat('dd-MM-yyy');
+    String formatted = formatter.format(_now);
 
     return Scaffold(
 
@@ -61,20 +65,44 @@ class _MeusProcessosState extends State<MeusProcessos> {
         return ListView.builder(
             itemCount: list.length,
             itemBuilder: (context, index){
-              return ListTile(
-                leading: IconButton(icon: Icon(Icons.delete), onPressed:(){
-                  MyDatabase.instance.deleteProcesso((list[index].numero));
-                },),
-
-                trailing: Column(
-                  children: <Widget>[
-                    Text(list[index].data_alt),
-                  ],
+              return Dismissible(
+                key: Key(DateTime.now().millisecondsSinceEpoch.toString()),
+                background: Container(
+                  color: Colors.red,
+                  child: Align(
+                    alignment: Alignment(-0.9, 0.0),
+                    child: Icon(
+                      Icons.delete, color: Colors.white,
+                    ),
+                  ),
                 ),
+                direction: DismissDirection.startToEnd,
 
-                title: Text(list[index].nome),
-                subtitle: Text(list[index].numero),
-                onTap: irParaResumo,
+
+
+                child: ListTile(
+                 /* leading: IconButton(icon: Icon(Icons.delete), onPressed:(){
+                    MyDatabase.instance.deleteProcesso((list[index].numero));
+                  },
+                  ), */
+                  trailing: Column(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(top: 32.0),
+                        child: Text(formatted, style: TextStyle(fontSize: 12),),
+                      )
+                    ],
+                  ),
+
+                  title: Text(list[index].nome),
+                  subtitle: Text(list[index].numero),
+                  onTap: irParaResumo,
+                ),
+                onDismissed: (double){
+                  setState(() {
+                    MyDatabase.instance.deleteProcesso(list[index].numero);
+                  });
+                },
               );
             });
       },),
