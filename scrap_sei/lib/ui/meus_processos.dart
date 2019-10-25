@@ -58,6 +58,7 @@ class _MeusProcessosState extends State<MeusProcessos> {
 
       body: StreamBuilder<List<Processo>>(
         stream: MyDatabase.instance.getAllProcessos(),
+        initialData: [],
         builder:(context, snapshot){
 
           List<Processo> list = snapshot.data;

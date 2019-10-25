@@ -17,14 +17,35 @@ class Processos extends Table{
 
 }
 
+class Resumos extends Table{
+
+  IntColumn get processo_id => integer().nullable().customConstraint('NULL REFERENCES Processos(id)')();
+
+  TextColumn get descricao => text()();
+  TextColumn get unidade => text()();
+  DateTimeColumn get data => dateTime()();
 
 
-@UseMoor(tables: [Processos])
+}
+
+class Detalhes  extends Table{
+
+  IntColumn get processo_id => integer().nullable().customConstraint('NULL REFERENCES Processos(id)')();
+
+  TextColumn get docu_processo => text()();
+  TextColumn get tipo_docu => text()();
+  DateTimeColumn get data_regi => dateTime()();
+  TextColumn get unidade => text()();
+}
+
+
+
+@UseMoor(tables: [Processos, Resumos, Detalhes])
 class MyDatabase extends _$MyDatabase {
 
   static final MyDatabase instance =   MyDatabase._internal();
   MyDatabase._internal():
-        super(FlutterQueryExecutor.inDatabaseFolder(path: 'db6.sqlite'));
+        super(FlutterQueryExecutor.inDatabaseFolder(path: 'db7.sqlite'));
 
   Stream<List<Processo>> getAllProcessos(){
     return select(processos).watch();
