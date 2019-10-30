@@ -18,10 +18,15 @@ class _NovoProcessoState extends State<NovoProcesso> {
 
   }
 
+  String _num ;
+  String _des ;
+
   String num = "";
   String des = "";
 
   final _formKey = GlobalKey<FormState>();
+
+
 
   @override
   Widget build(BuildContext context){
@@ -69,14 +74,7 @@ class _NovoProcessoState extends State<NovoProcesso> {
                     Container(
                       child: TextFormField(
                         // autofocus: true,
-                        validator: (value){
-                          if(value.isEmpty) return "o campo é obrigatório.";
-                          if (value.length < 3 )
-                            return "o campo precisa ter mais de 2 caracteres.";
-                          return null;
-                        },
-
-                        keyboardType: TextInputType.text,
+                        validator: validarNome,
                         style: new TextStyle(color: Colors.black45, fontSize: 15),
                         decoration: InputDecoration(
                             contentPadding: EdgeInsets.all(10),
@@ -93,12 +91,7 @@ class _NovoProcessoState extends State<NovoProcesso> {
                       padding: EdgeInsets.only(top: 20),
                       child: TextFormField(
                         // autofocus: true,
-                        validator: (value){
-                          if(value.isEmpty) return "o campo é obrigatório.";
-                          if (value.length < 3 )
-                            return "o campo precisa ter mais de 2 caracteres.";
-                          return null;
-                        },
+                        validator: validarDes,
                         keyboardType: TextInputType.text,
                         style: new TextStyle(color: Colors.black45, fontSize: 15),
                         decoration: InputDecoration(
@@ -149,10 +142,8 @@ class _NovoProcessoState extends State<NovoProcesso> {
                         Text("ADICIONAR",
                           style: TextStyle(color: Colors.white),),
                         color: Colors.deepPurpleAccent,
-
                       ),
                     )
-
                   ],
                 ),
               ),
@@ -161,8 +152,35 @@ class _NovoProcessoState extends State<NovoProcesso> {
     );
   }
 
+  String validarNome(String value){
+    if(value.isEmpty)
+      return "o campo é obrigatório.";
+    if (value.length < 2 )
+      return "o campo precisa ter mais de 1 caracteres.";
+    Pattern pattern =
+        '[00000.000000/0000-00]';
+    RegExp regex = new RegExp(pattern);
+    if (!regex.hasMatch(value))
+      return 'processo incorreto';
+    return null;
+  }
+
+  String validarDes(String value){
+    if(value.isEmpty)
+      return "o campo é obrigatório.";
+    if (value.length < 2 )
+      return "o campo precisa ter mais de 1 caracteres.";
+    Pattern pattern =
+        '[a-zA-Z]';
+    RegExp regex = new RegExp(pattern);
+    if (!regex.hasMatch(value))
+      return 'Apenas letras';
+    return null;
+  }
+
 
 }
+
 
 /*
 Scaffold.of(context).showSnackBar(SnackBar(content: Text("Adicionando processo"),
