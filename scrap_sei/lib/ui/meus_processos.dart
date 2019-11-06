@@ -79,8 +79,6 @@ class _MeusProcessosState extends State<MeusProcessos> {
                 ),
                 direction: DismissDirection.startToEnd,
 
-
-
                 child: ListTile(
                  /* leading: IconButton(icon: Icon(Icons.delete), onPressed:(){
                     MyDatabase.instance.deleteProcesso((list[index].numero));

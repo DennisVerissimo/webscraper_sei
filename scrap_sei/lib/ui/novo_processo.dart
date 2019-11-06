@@ -18,9 +18,6 @@ class _NovoProcessoState extends State<NovoProcesso> {
 
   }
 
-  String _num ;
-  String _des ;
-
   String num = "";
   String des = "";
 
@@ -74,12 +71,13 @@ class _NovoProcessoState extends State<NovoProcesso> {
                     Container(
                       child: TextFormField(
                         // autofocus: true,
-                        validator: validarNome,
+                        validator: validarProcesso,
                         style: new TextStyle(color: Colors.black45, fontSize: 15),
                         decoration: InputDecoration(
                             contentPadding: EdgeInsets.all(10),
                             labelText: "Processo",
-                            labelStyle: TextStyle(color: Colors.black, fontSize: 20)
+                            labelStyle: TextStyle(color: Colors.black, fontSize: 20),
+                          /* hintText: "000.0000/222-00", */
                         ),
                         onChanged: (value){
                           num = value;
@@ -128,7 +126,6 @@ class _NovoProcessoState extends State<NovoProcesso> {
                       ),
                     ),
 
-
                     Padding(
                       padding: const EdgeInsets.only(top: 10),
                       child: RaisedButton(
@@ -152,29 +149,34 @@ class _NovoProcessoState extends State<NovoProcesso> {
     );
   }
 
-  String validarNome(String value){
+  String validarProcesso(String value){
+
     if(value.isEmpty)
       return "o campo é obrigatório.";
-    if (value.length < 2 )
-      return "o campo precisa ter mais de 1 caracteres.";
+    if (value.length <  19 )
+      return "o campo precisa ter mais de 18 caracteres.";
+    if (value.length > 22 )
+      return "númeor de carateres inválido";
     Pattern pattern =
-        '[00000.000000/0000-00]';
+        r'^\d{5}\.\d{6}\/\d{4}\-\d{1,4}$';
     RegExp regex = new RegExp(pattern);
+    print(regex.hasMatch(value));
+    print(value);
     if (!regex.hasMatch(value))
       return 'processo incorreto';
     return null;
-  }
 
+  }
   String validarDes(String value){
     if(value.isEmpty)
       return "o campo é obrigatório.";
     if (value.length < 2 )
-      return "o campo precisa ter mais de 1 caracteres.";
+      return "o campo precisa ter mais de 1 caractere.";
     Pattern pattern =
-        '[a-zA-Z]';
+        r'[a-zA-Z]';
     RegExp regex = new RegExp(pattern);
     if (!regex.hasMatch(value))
-      return 'Apenas letras';
+      return 'tipo de descrição inválida';
     return null;
   }
 
