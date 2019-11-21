@@ -1,6 +1,7 @@
 import 'package:moor_flutter/moor_flutter.dart';
 import 'package:scrap_sei/ui/meus_processos.dart';
 import 'package:scrap_sei/ui/resumo_processo.dart';
+import 'dart:async';
 
 
 part 'my_database.g.dart';
@@ -45,19 +46,27 @@ class MyDatabase extends _$MyDatabase {
 
   static final MyDatabase instance =   MyDatabase._internal();
   MyDatabase._internal():
-        super(FlutterQueryExecutor.inDatabaseFolder(path: 'db7.sqlite'));
+        super(FlutterQueryExecutor.inDatabaseFolder(path: 'db8.sqlite'));
 
   Stream<List<Processo>> getAllProcessos(){
     return select(processos).watch();
   }
 
   Future addProcesso(Processo processo){
-    print(processo);
     return into(processos).insert(processo);
   }
 
   Future deleteProcesso(numero){
     return (delete(processos)..where((processo) => processo.numero.equals(numero))).go();
+  }
+
+
+  Future<Processo> existe(Processo encontrarProcesso){
+    return (select(processos)..where((processo) => processo.numero.equals(encontrarProcesso.numero))).getSingle();
+
+    //ver se o numero já existe
+    //ver se a descrição já existe
+    //usar um OU (OR)
   }
 
   @override
@@ -66,3 +75,9 @@ class MyDatabase extends _$MyDatabase {
 
 
 }
+
+/* Future<User> userById(int id) {
+  return (select(users)..where((user) => user.id.equals(id))).getSingle();
+  // runs SELECT * FROM users WHERE id = ?, automatically binds the parameter
+  // and parses the result row.
+} */

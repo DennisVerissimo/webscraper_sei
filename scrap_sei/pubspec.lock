@@ -173,14 +173,14 @@ packages:
       name: flutter_advanced_networkimage
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.15"
+    version: "0.5.0"
   flutter_svg:
     dependency: transitive
     description:
       name: flutter_svg
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.12.4+1"
+    version: "0.13.1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -369,12 +369,12 @@ packages:
     source: hosted
     version: "0.1.4"
   path_provider:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: path_provider
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.5.0+1"
+    version: "1.4.0"
   pedantic:
     dependency: transitive
     description:
@@ -386,6 +386,13 @@ packages:
     dependency: transitive
     description:
       name: petitparser
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.2.1"
+  platform:
+    dependency: transitive
+    description:
+      name: platform
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.2.1"
@@ -578,4 +585,4 @@ packages:
     version: "2.2.0"
 sdks:
   dart: ">=2.3.0 <3.0.0"
-  flutter: ">=1.5.0 <2.0.0"
+  flutter: ">=1.6.0 <2.0.0"

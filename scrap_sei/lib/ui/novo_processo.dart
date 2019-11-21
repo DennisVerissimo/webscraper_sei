@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:scrap_sei/ui/meus_processos.dart';
 import 'package:scrap_sei/db/my_database.dart';
+import 'package:scrap_sei/controller/processo_controller.dart';
 
 
 class NovoProcesso extends StatefulWidget {
@@ -131,8 +132,7 @@ class _NovoProcessoState extends State<NovoProcesso> {
                       child: RaisedButton(
                         onPressed: () async{
                           if(_formKey.currentState.validate()){
-                            await MyDatabase.instance.addProcesso(Processo(numero: num, nome: des,));
-                            Navigator.pushReplacement(context, MaterialPageRoute(builder: (contexto) => MeusProcessos() ));
+                            ProcessoController.adicionar(Processo(numero: num, nome: des,), context);
                           }
                         },
                         child:
@@ -156,7 +156,7 @@ class _NovoProcessoState extends State<NovoProcesso> {
     if (value.length <  19 )
       return "o campo precisa ter mais de 18 caracteres.";
     if (value.length > 22 )
-      return "númeor de carateres inválido";
+      return "campo precisa ter no máximo 22 caracteres";
     Pattern pattern =
         r'^\d{5}\.\d{6}\/\d{4}\-\d{1,4}$';
     RegExp regex = new RegExp(pattern);
@@ -173,7 +173,7 @@ class _NovoProcessoState extends State<NovoProcesso> {
     if (value.length < 2 )
       return "o campo precisa ter mais de 1 caractere.";
     Pattern pattern =
-        r'[a-zA-Z]';
+        r'[A-Za-z0-9]';
     RegExp regex = new RegExp(pattern);
     if (!regex.hasMatch(value))
       return 'tipo de descrição inválida';
