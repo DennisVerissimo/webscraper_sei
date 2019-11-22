@@ -37,11 +37,11 @@ class _MeusProcessosState extends State<MeusProcessos> {
         onPressed: irParaNovoProcesso,
 
       ), */
-      bottomNavigationBar: BottomAppBar(
+     /* bottomNavigationBar: BottomAppBar(
         color: Colors.deepPurple,
         child: Container(
           height: 50.0,),
-      ),
+      ), */
      /* floatingActionButtonLocation: FloatingActionButtonLocation.endDocked, */
 
       appBar: PreferredSize(

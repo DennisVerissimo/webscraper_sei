@@ -38,12 +38,12 @@ class _NovoProcessoState extends State<NovoProcesso> {
 
         ),
       ), */
-      bottomNavigationBar: BottomAppBar(
+   /*   bottomNavigationBar: BottomAppBar(
         color: Colors.deepPurple,
         child: Container(
 
           height: 50.0,),
-      ),
+      ), */
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
       backgroundColor: Colors.white,
@@ -60,92 +60,94 @@ class _NovoProcessoState extends State<NovoProcesso> {
         ),
       ),
 
-      body: SingleChildScrollView(
-          padding: EdgeInsets.all(20),
-          child: Center(
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  //mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      child: TextFormField(
-                        // autofocus: true,
-                        validator: validarProcesso,
-                        style: new TextStyle(color: Colors.black45, fontSize: 15),
-                        decoration: InputDecoration(
-                            contentPadding: EdgeInsets.all(10),
-                            labelText: "Processo",
-                            labelStyle: TextStyle(color: Colors.black, fontSize: 20),
-                          /* hintText: "000.0000/222-00", */
-                        ),
-                        onChanged: (value){
-                          num = value;
-                        },
-                      ),
-                    ),
-
-                    Container(
-                      padding: EdgeInsets.only(top: 20),
-                      child: TextFormField(
-                        // autofocus: true,
-                        validator: validarDes,
-                        keyboardType: TextInputType.text,
-                        style: new TextStyle(color: Colors.black45, fontSize: 15),
-                        decoration: InputDecoration(
-                            contentPadding: EdgeInsets.all(10),
-                            labelText: "Descrição",
-                            labelStyle: TextStyle(color: Colors.black, fontSize: 20, )
-                        ),
-                        onChanged: (value){
-                          des = value;
-                        },
-                      ),
-                    ),
-
-                    Container(
-                      padding: EdgeInsets.only(top: 20),
-                      child: Row(
-                        children: <Widget>[
-                          Container(
-                              child: Image.asset("imagens/infra.png",
-                                  fit: BoxFit.fitWidth ,
-                                ),
-                            margin: EdgeInsets.only(right: 10),
+      body: Builder(
+        builder: (context) => SingleChildScrollView(
+            padding: EdgeInsets.all(20),
+            child: Center(
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    //mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                        child: TextFormField(
+                          // autofocus: true,
+                          validator: validarProcesso,
+                          style: new TextStyle(color: Colors.black45, fontSize: 15),
+                          decoration: InputDecoration(
+                              contentPadding: EdgeInsets.all(10),
+                              labelText: "Processo",
+                              labelStyle: TextStyle(color: Colors.black, fontSize: 20),
+                            /* hintText: "000.0000/222-00", */
                           ),
-                          Expanded(child: TextFormField(
-                            keyboardType: TextInputType.text,
-                            decoration: InputDecoration(
-                              hintText: "Código da imagem",
+                          onChanged: (value){
+                            num = value;
+                          },
+                        ),
+                      ),
+
+                      Container(
+                        padding: EdgeInsets.only(top: 20),
+                        child: TextFormField(
+                          // autofocus: true,
+                          validator: validarDes,
+                          keyboardType: TextInputType.text,
+                          style: new TextStyle(color: Colors.black45, fontSize: 15),
+                          decoration: InputDecoration(
+                              contentPadding: EdgeInsets.all(10),
+                              labelText: "Descrição",
+                              labelStyle: TextStyle(color: Colors.black, fontSize: 20, )
+                          ),
+                          onChanged: (value){
+                            des = value;
+                          },
+                        ),
+                      ),
+
+                      Container(
+                        padding: EdgeInsets.only(top: 20),
+                        child: Row(
+                          children: <Widget>[
+                            Container(
+                                child: Image.asset("imagens/infra.png",
+                                    fit: BoxFit.fitWidth ,
+                                  ),
+                              margin: EdgeInsets.only(right: 10),
                             ),
+                            Expanded(child: TextFormField(
+                              keyboardType: TextInputType.text,
+                              decoration: InputDecoration(
+                                hintText: "Código da imagem",
+                              ),
 
-                            style: new TextStyle(color: Colors.black45, fontSize: 15),
-                          ),
-                          )
-                        ],
+                              style: new TextStyle(color: Colors.black45, fontSize: 15),
+                            ),
+                            )
+                          ],
+                        ),
                       ),
-                    ),
 
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10),
-                      child: RaisedButton(
-                        onPressed: () async{
-                          if(_formKey.currentState.validate()){
-                            ProcessoController.adicionar(Processo(numero: num, nome: des,), context);
-                          }
-                        },
-                        child:
-                        Text("ADICIONAR",
-                          style: TextStyle(color: Colors.white),),
-                        color: Colors.deepPurpleAccent,
-                      ),
-                    )
-                  ],
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10),
+                        child: RaisedButton(
+                          onPressed: () async{
+                            if(_formKey.currentState.validate()){
+                              ProcessoController.adicionar(Processo(numero: num, nome: des,), context);
+                            }
+                          },
+                          child:
+                          Text("ADICIONAR",
+                            style: TextStyle(color: Colors.white),),
+                          color: Colors.deepPurpleAccent,
+                        ),
+                      )
+                    ],
+                  ),
                 ),
-              ),
+            ),
           ),
-        ),
+      ),
     );
   }
 

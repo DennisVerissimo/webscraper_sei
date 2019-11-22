@@ -14,9 +14,16 @@ class ProcessoController{
         MyDatabase.instance.addProcesso(novoProcesso);
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (contexto) => MeusProcessos() ));
       }else{
-        print('processo já existe');
+        final snackBar = SnackBar(
+            content: Text('Você já cadastrou esse processo com a descrição: ${processo_encontrado.nome}'),
+            backgroundColor: Colors.red,
+            duration: Duration(seconds: 3),
+        );
+        Scaffold.of(context).showSnackBar(snackBar);
       }
     });
   }
+
+
 
 }
