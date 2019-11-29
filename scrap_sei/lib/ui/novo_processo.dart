@@ -28,6 +28,9 @@ class _NovoProcessoState extends State<NovoProcesso> {
 
   @override
   Widget build(BuildContext context){
+
+    ProcessoController.urlCaptcha();
+
     return Scaffold(
     /*  floatingActionButton: Container(
         padding: EdgeInsets.only(top: 45),
@@ -110,10 +113,12 @@ class _NovoProcessoState extends State<NovoProcesso> {
                         child: Row(
                           children: <Widget>[
                             Container(
-                                child: Image.asset("imagens/infra.png",
+                                /* child: Image.asset("imagens/infra.png",
                                     fit: BoxFit.fitWidth ,
-                                  ),
+                                  ), */
                               margin: EdgeInsets.only(right: 10),
+                              child: Image.network('https://sei.ifce.edu.br/infra_js/infra_gerar_captcha.php?codetorandom=101-57', fit: BoxFit.fitWidth,),
+
                             ),
                             Expanded(child: TextFormField(
                               keyboardType: TextInputType.text,
