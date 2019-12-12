@@ -25,11 +25,9 @@ class _NovoProcessoState extends State<NovoProcesso> {
   final _formKey = GlobalKey<FormState>();
 
 
-
   @override
   Widget build(BuildContext context){
 
-    ProcessoController.urlCaptcha();
 
     return Scaffold(
     /*  floatingActionButton: Container(
@@ -116,9 +114,29 @@ class _NovoProcessoState extends State<NovoProcesso> {
                                 /* child: Image.asset("imagens/infra.png",
                                     fit: BoxFit.fitWidth ,
                                   ), */
-                              margin: EdgeInsets.only(right: 10),
-                              child: Image.network('https://sei.ifce.edu.br/infra_js/infra_gerar_captcha.php?codetorandom=101-57', fit: BoxFit.fitWidth,),
+                              margin: EdgeInsets.only(right: 10), child: FutureBuilder<String>(
+                        future: ProcessoController.urlCaptcha(),
+                        builder: (context, snapshot){
+                          switch(snapshot.connectionState){
+                            case ConnectionState.none:
+                            case ConnectionState.waiting:
+                              return Center(
+                                child: CircularProgressIndicator(),);
+                              default:
+                                if (snapshot.hasError){
+                                  final snackbar = SnackBar(
+                                    content: Text('erro'),
+                                    duration: Duration(seconds: 3),
+                                  );
+                                  Scaffold.of(context).showSnackBar(snackbar);
+                                }else {
+                                  return Image.network(snapshot.data, fit: BoxFit.fitWidth,);
+                                }
 
+                          }
+                        },
+                      ),
+                           // Image.network(ProcessoController.urlCaptcha(), fit: BoxFit.fitWidth,),
                             ),
                             Expanded(child: TextFormField(
                               keyboardType: TextInputType.text,
